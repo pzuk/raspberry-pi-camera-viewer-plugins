@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:theme="@style/Theme.Transparent"
+    android:id="@+id/topLayout"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:gravity="center">
+
+            <Button
+                android:id="@+id/btnUp"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Up" />
+
+           
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btnLeft"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Left" />
+
+            <ImageView
+                android:id="@+id/imgMoveMe"
+                android:layout_width="46dp"
+                android:layout_height="match_parent"
+                android:src="@android:drawable/ic_menu_compass" />
+            
+             <Button
+                android:id="@+id/btnRight"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Right" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnDown"
+            android:layout_width="70dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Bottom" />
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
