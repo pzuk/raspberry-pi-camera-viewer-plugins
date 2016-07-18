@@ -3,6 +3,7 @@ package com.example.rpicamviewer2.plugin;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
@@ -93,7 +94,7 @@ public class PluginService2 extends Service {
 		}
 
 		@Override
-		public void commandReceived(String cmd, int camera)
+		public void commandReceived(String cmd, Bundle result, int camera)
 				throws RemoteException {
 			Log.v(LOG_TAG, "commandReceived, cmd="+cmd+" ,cam="+camera );
 			

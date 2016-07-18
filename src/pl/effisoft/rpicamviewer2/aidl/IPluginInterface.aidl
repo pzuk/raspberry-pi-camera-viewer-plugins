@@ -15,7 +15,7 @@ interface IPluginInterface {
   void pipelineStateChanged(int state, int camera);
   void pipelineScreenshotMade(in Bitmap bitmap, int camera);
   
-  void commandReceived(String cmd, int camera);
+  void commandReceived(String cmd, in Bundle result, int camera);
   
   String pluginName();
   String pluginDescription();

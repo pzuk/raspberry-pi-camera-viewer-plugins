@@ -316,7 +316,7 @@ public class PluginService1 extends Service {
 		}
 
 		@Override
-		public void commandReceived(String cmd, int camera)
+		public void commandReceived(String cmd, Bundle result, int camera)
 				throws RemoteException {
 			// TODO Auto-generated method stub
 			
