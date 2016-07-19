@@ -1,4 +1,4 @@
-package com.example.rpicamviewer2.plugin;
+package com.effi.example.rpicamviewer2.plugin;
 
 import android.app.Service;
 import android.content.Intent;

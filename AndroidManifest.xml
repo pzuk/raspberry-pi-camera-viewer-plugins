@@ -11,14 +11,14 @@
     
     <application android:label="@string/app_name"
         android:icon="@drawable/ic_launcher">
-        <service android:name="com.example.rpicamviewer2.plugin.PluginService1"
+        <service android:name="com.effi.example.rpicamviewer2.plugin.PluginService1"
                   android:exported="true">
             <intent-filter>
                 <action android:name="pl.effisoft.rpicamviewer2.intent.action.PICK_PLUGIN" />
                 <category android:name="pl.effisoft.rpicamviewer2.intent.category.PLUGIN1" />
             </intent-filter>
         </service>
-        <service android:name="com.example.rpicamviewer2.plugin.PluginService2"
+        <service android:name="com.effi.example.rpicamviewer2.plugin.PluginService2"
                   android:exported="true">
             <intent-filter>
                 <action android:name="pl.effisoft.rpicamviewer2.intent.action.PICK_PLUGIN" />
