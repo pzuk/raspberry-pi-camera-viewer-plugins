@@ -55,7 +55,7 @@ Called when Activity shows/hides visible controls. Boolean attribute determines 
 ```
 void pipelinePlayingProgress(int progress, int total, int camera);
 ```
-Be carefull with this method implementation. It’s called every time when pipeline is in PLAYING state (many times per second), so any code inside must be fast, otherwise you block RapsberryPi Camera Viewer and your pipeline.
+Be careful with this method implementation. It’s called every time when pipeline is in PLAYING state (many times per second), so any code inside must be fast, otherwise you block RapsberryPi Camera Viewer and your pipeline.
 ```
 void pipelineStateChanged(int state, int camera);
 ```
@@ -70,7 +70,7 @@ GST_STATE_PLAYING             = 4
 ```
 void pipelineScreenshotMade(in Bitmap bitmap, int camera);
 ```
-Called when screenshot has been made. Camera determines camera idenfier see below.
+Called when screenshot has been made. Camera determines camera identifier see below.
 
 ### Camera identifiers
 Some methods have “camera” integer attribute. In current version of RapsberryPi Camera Viewer (Gstreamer Viewer) this value can be one of: 0,1,2 or 3. Index determines number of preview inside Activity. Current version can show up to 4 previews on single activity. The same plugin can be attached to more than one preview on the same activity, so this variable may help you identify preview source.

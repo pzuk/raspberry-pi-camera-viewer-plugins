@@ -223,6 +223,7 @@ public class PluginService1 extends Service {
         }
     }
 	
+
 	public void onStart(Intent intent, int startId) {
 		super.onStart( intent, startId );
 	}
@@ -245,6 +246,17 @@ public class PluginService1 extends Service {
     private final IPluginInterface.Stub interfaceBinder = new IPluginInterface.Stub() {
 		
 
+    	/*
+    	 * It’s not called directly from Activity’s onCreate() method. 
+    	 * In onCreate() method RapsberryPi Camera Viewer binds plugins. 
+    	 * Once connection to plugin is successfully established, 
+    	 * application will query plugin using 3 methods:
+    	 * String pluginName();
+    	 * String pluginDescription();
+    	 * String pluginVersion();
+    	 * They should return basic information about plugin. In the 
+    	 * last step (when Activity is visible and communication with 
+    	 * plugins is made)  parentActivityOnCreate is called. */
 		@Override
 		public void parentActivityOnCreate(String pipeline, int camera, IRpiCamViewerInterface callback) throws RemoteException {
 			callback_ = callback;
@@ -257,6 +269,7 @@ public class PluginService1 extends Service {
 	        mainHandler.sendMessage(msg);
 		}
 
+		//Called directly from Activity onClose()
 		@Override
 		public void parentActivityOnClose() throws RemoteException {
 			//Notify main thread about parentActivityOnClose
@@ -268,6 +281,11 @@ public class PluginService1 extends Service {
 	        
 		}
 
+		/*
+		 * Called when Activity goes/returns to/from fullscreen mode. 
+		 * Boolean attribute determines current state; true when activity 
+		 * is currently in fullscreen mode, false otherwise
+		 * */
 		@Override
 		public void parentActivityOnFullscreen(boolean fullscreen)
 				throws RemoteException {
@@ -275,6 +293,11 @@ public class PluginService1 extends Service {
 			
 		}
 
+		/*
+		 * Called when Activity shows/hides visible controls. Boolean 
+		 * attribute determines current state; true when controls are 
+		 * currently visible, false otherwise
+		 * */
 		@Override
 		public void parentActivityOnControlsVisibilityChange(boolean visible)
 				throws RemoteException {
@@ -282,6 +305,12 @@ public class PluginService1 extends Service {
 			
 		}
 
+		/*
+		 * Be careful with this method implementation. It’s called 
+		 * every time when pipeline is in PLAYING state (many times 
+		 * per second), so any code inside must be fast, otherwise 
+		 * you block RapsberryPi Camera Viewer and your pipeline.
+		 * */
 		@Override
 		public void pipelinePlayingProgress(int progress, int total, int camera)
 				throws RemoteException {
@@ -289,17 +318,25 @@ public class PluginService1 extends Service {
 			
 		}
 
+		/*
+		 * Called when pipeline changes it’s state. State can be one 
+		 * of following:
+		 * GST_STATE_VOID_PENDING        = 0,
+		 * GST_STATE_NULL                = 1,
+		 * GST_STATE_READY               = 2,
+		 * GST_STATE_PAUSED              = 3,
+		 * GST_STATE_PLAYING             = 4
+		 * */
 		@Override
 		public void pipelineStateChanged(int state, int camera) throws RemoteException {
 			// TODO Auto-generated method stub
-			//   state:
-			//		GST_STATE_VOID_PENDING        = 0,
-			//		GST_STATE_NULL                = 1,
-			//		GST_STATE_READY               = 2,
-			//		GST_STATE_PAUSED              = 3,
-			//		GST_STATE_PLAYING             = 4
+
 		}
 
+		/*
+		 * Called when screenshot has been made. Camera 
+		 * determines camera identifier see below.
+		 * */
 		@Override
 		public void pipelineScreenshotMade(Bitmap bitmap, int camera)
 				throws RemoteException {
@@ -322,6 +359,7 @@ public class PluginService1 extends Service {
 			return "1.0";
 		}
 
+		//Called in response to sendCommand(String cmd, in Bundle params);
 		@Override
 		public void commandReceived(String cmd, Bundle result, int camera)
 				throws RemoteException {
@@ -329,6 +367,7 @@ public class PluginService1 extends Service {
 			
 		}
 
+		//Called directly from Activity onPause()
 		@Override
 		public void parentActivityOnPause() throws RemoteException {
 			//Notify main thread about parentActivityOnPause
@@ -339,6 +378,7 @@ public class PluginService1 extends Service {
 	        mainHandler.sendMessage(msg);
 		}
 
+		//Called directly from Activity onResume()
 		@Override
 		public void parentActivityOnResume() throws RemoteException {
 			//Notify main thread about parentActivityOnResume
@@ -349,6 +389,7 @@ public class PluginService1 extends Service {
 	        mainHandler.sendMessage(msg);
 		}
 
+	    //Called directly from Activity onStart()
 		@Override
 		public void parentActivityOnStart() throws RemoteException {
 			//Notify main thread about parentActivityOnStart
@@ -359,6 +400,7 @@ public class PluginService1 extends Service {
 	        mainHandler.sendMessage(msg);
 		}
 
+		//Called directly from Activity onStop()
 		@Override
 		public void parentActivityOnStop() throws RemoteException {
 			//Notify main thread about parentActivityOnStop
