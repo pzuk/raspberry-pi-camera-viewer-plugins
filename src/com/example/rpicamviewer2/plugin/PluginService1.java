@@ -68,10 +68,7 @@ public class PluginService1 extends Service {
             		return;
             	
         		final ViewHolder viewHolder = new ViewHolder(PluginService1.this, camera);
-        	    //LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        	    //viewHolder.view = inflater.inflate( R.layout.main, viewHolder);
         	    views.put(camera, viewHolder);
-        		//final LinearLayout topLayout = (LinearLayout) viewHolder.view.findViewById(R.id.topLayout);
 		    
         		windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
@@ -252,7 +249,7 @@ public class PluginService1 extends Service {
 
 		@Override
 		public void parentActivityOnClose() throws RemoteException {
-			//Notify main thread about parentActivityOnCreate
+			//Notify main thread about parentActivityOnClose
 			Message msg = mainHandler.obtainMessage();
 			Bundle bundle = new Bundle();
 			bundle.putString("action", "parentActivityOnClose");
@@ -324,6 +321,7 @@ public class PluginService1 extends Service {
 
 		@Override
 		public void parentActivityOnPause() throws RemoteException {
+			//Notify main thread about parentActivityOnPause
 			Message msg = mainHandler.obtainMessage();
 			Bundle bundle = new Bundle();
 			bundle.putString("action", "parentActivityOnPause");
@@ -333,6 +331,7 @@ public class PluginService1 extends Service {
 
 		@Override
 		public void parentActivityOnResume() throws RemoteException {
+			//Notify main thread about parentActivityOnResume
 			Message msg = mainHandler.obtainMessage();
 			Bundle bundle = new Bundle();
 			bundle.putString("action", "parentActivityOnResume");
@@ -342,6 +341,7 @@ public class PluginService1 extends Service {
 
 		@Override
 		public void parentActivityOnStart() throws RemoteException {
+			//Notify main thread about parentActivityOnStart
 			Message msg = mainHandler.obtainMessage();
 			Bundle bundle = new Bundle();
 			bundle.putString("action", "parentActivityOnStart");
@@ -351,6 +351,7 @@ public class PluginService1 extends Service {
 
 		@Override
 		public void parentActivityOnStop() throws RemoteException {
+			//Notify main thread about parentActivityOnStop
 			Message msg = mainHandler.obtainMessage();
 			Bundle bundle = new Bundle();
 			bundle.putString("action", "parentActivityOnStop");
