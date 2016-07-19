@@ -27,7 +27,7 @@ import android.widget.Toast;
 import pl.effisoft.rpicamviewer2.aidl.IPluginInterface;
 import pl.effisoft.rpicamviewer2.aidl.IRpiCamViewerInterface;
 
-import com.example.rpicamviewer2.plugin.R;
+import com.effi.example.rpicamviewer2.plugin.R;
 
 public class PluginService1 extends Service {
 	static final String LOG_TAG = "PluginService1";
