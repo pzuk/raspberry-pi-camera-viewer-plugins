@@ -129,7 +129,7 @@ Response bundle:
 > "workAreaLeft" : int - work area dimensions  
 > "workAreaRight" : int - work area dimensions  
 > "workAreaWidth" : int - work area dimensions  
-> "workAreaHeight" : int - work area dimensions
+> "workAreaHeight" : int - work area dimensions  
 > "pipeline" : string - pipeline used by gstreamer  
                 
 ##### PIPELINE_SCREENSHOT
