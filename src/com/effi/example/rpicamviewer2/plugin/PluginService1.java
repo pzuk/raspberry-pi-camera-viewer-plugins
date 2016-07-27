@@ -63,6 +63,9 @@ public class PluginService1 extends Service {
         	//-------------------------- parentActivityOnCreate -------------------------------
         	if( bundle.getString("action").equals("parentActivityOnCreate") )
         	{
+        		//Do not send PREVIEW_FULLSCREEN message from parentActivityOnCreate callback. Switching from/to 
+        		//full screen requires activity restart, so you may case infinity loop because of that. 
+        		
         		int camera = bundle.getInt("camera", -1);
             	if( camera == -1 ) 
             		return;
@@ -114,6 +117,8 @@ public class PluginService1 extends Service {
 						    	//here: http://effisoft.pl/raspberrypi-camera-viewer
 						    	Bundle bundle = new Bundle();
 						    	bundle.putInt("camera", viewHolder.camera_);
+						    	//bundle.putBoolean("hide", true);
+						    	
 								callback_.sendCommand("PIPELINE_PLAY", bundle);
 								/* You can use one of:
 								 * PIPELINE_PLAY
@@ -122,6 +127,7 @@ public class PluginService1 extends Service {
 								 * PIPELINE_SCREENSHOT
 								 * PREVIEW_FULLSCREEN
 								 * PREVIEW_HIDECONTROLS
+								 * PREVIEW_HIDE_CONTROLS_BUTTON
 								 * */
 							} catch (RemoteException e) {
 								Log.e(LOG_TAG, e.getMessage());

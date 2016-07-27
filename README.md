@@ -88,6 +88,7 @@ PIPELINE_STATE
 PIPELINE_SCREENSHOT
 PREVIEW_FULLSCREEN
 PREVIEW_HIDECONTROLS
+PREVIEW_HIDE_CONTROLS_BUTTON
 ```
 In response, RapsberryPi Camera Viewer will call:
 ```
@@ -123,7 +124,13 @@ Response bundle:
 > "fullscreen" : boolean - true when working in fulscreen, false otherwise  
 > "controlsvisible" : boolean - true when GUI controls are visible, false otherwise  
 > "controlswitchvisible" : boolean - true when switch GUI controls button is visible, false otherwise  
-
+> "workAreaTop" : int -  work area dimensions  
+> "workAreaBottom" : int -  work area dimensions  
+> "workAreaLeft" : int -  work area dimensions  
+> "workAreaRight" : int -  work area dimensions  
+> "workAreaWidth" : int -  work area dimensions  
+> "workAreaHeight" : int -  work area dimensions  
+                
 ##### PIPELINE_SCREENSHOT
 Request bundle: 
 > "camera" : int - camera index plugin belongs to
@@ -141,6 +148,14 @@ Response bundle:
 > "ok" : boolean - command result true(success)/false(failure)
 
 ##### PREVIEW_HIDECONTROLS
+Request bundle: 
+> "camera" : int - camera index plugin belongs to  
+> "hide" : boolean - true/false
+
+Response bundle: 
+> "ok" : boolean - command result true(success)/false(failure)
+
+##### PREVIEW_HIDE_CONTROLS_BUTTON
 Request bundle: 
 > "camera" : int - camera index plugin belongs to  
 > "hide" : boolean - true/false
