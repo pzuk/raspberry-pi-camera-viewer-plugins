@@ -1,6 +1,8 @@
 # raspberry-pi-camera-viewer-plugins
 Example plugins for RaspberryPi Camera Viewer (Gstreamer viewer) Android application
 
+RaspberryPi Camera Viewer plugins are regular Android Services with interface defined in aidl file. RPiCamViewer uses regular Services binding mechanism to communicate each other (Plugin to RPiCamViewer and RPiCamViewer to Plugin).
+
 RapsberryPi Camera Viewer (Gstreamer Viewer) available [here](https://play.google.com/store/apps/details?id=pl.effisoft.rpicamviewer2) allows you write your own plugins and attach them to any configured pipeline. Communication between main application and plugin is bidirectional. Application notifies plugin and plugin can manage application as well. Plugin can be any custom peace of code. Thanks to plugins you may build custom GUI, manage pipeline, create additional communication with your streaming server etc. If currently available interface is not enough for your needs – let us know and we extend it.
 
 ## Plugin interface
